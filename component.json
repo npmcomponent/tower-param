@@ -1,0 +1,9 @@
+{
+  "name": "tower-param-validator",
+  "repo": "tower/param-validator",
+  "description": "Tower Param Validator component",
+  "version": "0.0.1",
+  "keywords": [],
+  "scripts": ["index.js"],
+  "license": "MIT"
+}

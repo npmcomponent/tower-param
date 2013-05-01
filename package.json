@@ -1,0 +1,5 @@
+{
+  "name": "tower-param-validator",
+  "version": "0.0.1",
+  "main": "./index.js"
+}
