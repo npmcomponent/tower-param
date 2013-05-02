@@ -47,6 +47,12 @@ function param(name, type, options) {
 }
 
 /**
+ * Mixin `Emitter`.
+ */
+
+Emitter(exports);
+
+/**
  * Instantiate a new `Param`.
  */
 
