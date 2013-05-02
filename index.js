@@ -4,7 +4,8 @@
  */
 
 var Emitter = require('tower-emitter')
-  , validator = require('tower-validator').ns('param');
+  , validator = require('tower-validator')
+  , validators = require('./lib/validators');
 
 /**
  * Expose `param`.
@@ -28,7 +29,7 @@ exports.collection = [];
  * Expose `validator`.
  */
 
-exports.validator = validator;
+exports.validator = validator.ns('param');
 
 /**
  * Get a `Param`.
@@ -76,11 +77,11 @@ function Param(name, type, options){
  */
 
 Param.prototype.validator = function(key, val){
-  var assert = operator(key);
+  var assert = exports.validator(key);
 
   (this.validators || (this.validators = []))
-    .push(function validate(query, constraint){ // XXX: fn callback later
-      if (!assert(constraint.right.value, val))
+    .push(function validate(self, query, constraint){ // XXX: fn callback later
+      if (!assert(self, constraint.right.value, val))
         query.errors.push('Invalid Constraint something...');
     });
 }
@@ -93,12 +94,11 @@ Param.prototype.operator = function(name){
   if (!this.operators) {  
     this.operators = [];
 
-    var assert = operator('in')
-      , self = this;
+    var assert = validator('in');
 
     (this.validators || (this.validators = []))
-      .push(function validate(query, constraint){
-        if (!assert(constraint.operator, self.operators)) {
+      .push(function validate(self, query, constraint){
+        if (!assert(self, constraint.operator, self.operators)) {
           query.errors.push('Invalid operator ' + constraint.operator);
         }
       });
@@ -111,7 +111,7 @@ Param.prototype.validate = function(query, constraint, fn){
   if (!this.validators) return;
 
   for (var i = 0, n = this.validators.length; i < n; i++) {
-    this.validators[i](query, constraint);
+    this.validators[i](this, query, constraint);
   }
 }
 
@@ -123,3 +123,5 @@ Param.prototype.alias = function(key){
 Param.prototype.format = function(type, name){
   this.serializer = { type: type, name: name };
 }
+
+validators(exports);
