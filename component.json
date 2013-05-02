@@ -5,8 +5,9 @@
   "version": "0.0.1",
   "keywords": [],
   "dependencies": {
-    "tower-operator": "*"
+    "tower-emitter": "*",
+    "tower-validator": "*"
   },
-  "scripts": ["index.js"],
+  "scripts": ["index.js", "lib/validators.js"],
   "license": "MIT"
 }

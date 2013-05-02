@@ -3,13 +3,47 @@
  * Module dependencies.
  */
 
-var operator = require('tower-operator');
+var Emitter = require('tower-emitter')
+  , validator = require('tower-validator').ns('param');
+
+/**
+ * Expose `param`.
+ */
+
+exports = module.exports = param;
 
 /**
  * Expose `Param`.
  */
 
-module.exports = Param;
+exports.Param = Param;
+
+/**
+ * Expose `collection`.
+ */
+
+exports.collection = [];
+
+/**
+ * Expose `validator`.
+ */
+
+exports.validator = validator;
+
+/**
+ * Get a `Param`.
+ */
+
+function param(name, type, options) {
+  if (exports.collection[name])
+    return exports.collection[name];
+
+  var instance = new Param(name, type, options);
+  exports.collection[name] = instance;
+  exports.collection.push(instance);
+  exports.emit('define', name, instance);
+  return instance;
+}
 
 /**
  * Instantiate a new `Param`.
@@ -83,4 +117,9 @@ Param.prototype.validate = function(query, constraint, fn){
 
 Param.prototype.alias = function(key){
   (this.aliases || (this.aliases = [])).push(key);
+}
+
+// XXX: this might be too specific, trying it out for now.
+Param.prototype.format = function(type, name){
+  this.serializer = { type: type, name: name };
 }

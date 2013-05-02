@@ -1,8 +1,9 @@
-var Param = 'undefined' === typeof window
+var param = 'undefined' === typeof window
   ? require('..')
   : require('tower-param'); // how to do this better?
 
-var assert = require('assert');
+var Param = param.Param
+  , assert = require('assert');
 
 describe('Param', function(){
   it('should define', function(){
