@@ -5,6 +5,7 @@
 
 var Emitter = require('tower-emitter')
   , validator = require('tower-validator')
+  , type = require('tower-type')
   , validators = require('./lib/validators');
 
 /**
@@ -128,6 +129,18 @@ Param.prototype.alias = function(key){
 // XXX: this might be too specific, trying it out for now.
 Param.prototype.format = function(type, name){
   this.serializer = { type: type, name: name };
+}
+
+/**
+ * Convert a value into a proper form.
+ *
+ * Typecasting.
+ *
+ * @param {Mixed} val
+ */
+
+Param.prototype.typecast = function(val){
+  return type(this.type).sanitize(val);
 }
 
 validators(exports);

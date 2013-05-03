@@ -77,4 +77,11 @@ describe('Param', function(){
     param.validate(query, constraint);
     assert(0 === query.errors.length);
   });
+
+  it('should typecast', function(){
+    var param = new Param('tags', 'array');
+    assert.deepEqual([ 'x' ], param.typecast('x'));
+    assert.deepEqual([ 'x', 'y' ], param.typecast([ 'x', 'y' ]));
+    assert.deepEqual([ 'x', 'y' ], param.typecast('x,y'));
+  });
 });

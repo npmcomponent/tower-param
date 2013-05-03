@@ -4,6 +4,7 @@
   "main": "./index.js",
   "dependencies": {
     "tower-emitter": "*",
-    "tower-validator": "*"
+    "tower-validator": "*",
+    "tower-type": "*"
   }
 }
