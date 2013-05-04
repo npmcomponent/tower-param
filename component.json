@@ -9,6 +9,14 @@
     "tower/validator": "*",
     "tower/type": "*"
   },
+  "local": [],
+  "paths": [
+    "../"
+  ],
+  "development": {
+    "timoxley/assert": "*",
+    "visionmedia/mocha": "*"
+  },
   "scripts": ["index.js", "lib/validators.js"],
   "license": "MIT"
 }
