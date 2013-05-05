@@ -142,7 +142,7 @@ Param.prototype.format = function(type, name){
  *
  * @param {Mixed} val
  */
-
+ 
 Param.prototype.typecast = function(val){
   // XXX: handle item type for array.
   return type(this.type).sanitize(val);
