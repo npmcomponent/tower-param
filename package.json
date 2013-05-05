@@ -5,6 +5,7 @@
   "dependencies": {
     "tower-emitter": "*",
     "tower-validator": "*",
-    "tower-type": "*"
+    "tower-type": "*",
+    "part-is-array": "*"
   }
 }

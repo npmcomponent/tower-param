@@ -6,6 +6,7 @@
 var Emitter = require('tower-emitter')
   , validator = require('tower-validator')
   , type = require('tower-type')
+  , isArray = require('part-is-array')
   , validators = require('./lib/validators');
 
 /**
@@ -60,6 +61,9 @@ Emitter(exports);
 function Param(name, type, options){
   if (!type) {
     options = { type: 'string' };
+  } else if (isArray(type)) {
+    options = { type: 'array' };
+    options.itemType = type[0] || 'string';
   } else if ('object' === typeof type) {
     options = type;
   } else {
@@ -140,6 +144,7 @@ Param.prototype.format = function(type, name){
  */
 
 Param.prototype.typecast = function(val){
+  // XXX: handle item type for array.
   return type(this.type).sanitize(val);
 }
 
