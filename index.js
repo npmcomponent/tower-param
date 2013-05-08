@@ -119,11 +119,13 @@ Param.prototype.operator = function(name){
 }
 
 Param.prototype.validate = function(query, constraint, fn){
-  if (!this.validators) return;
+  if (!this.validators) return true;
 
   for (var i = 0, n = this.validators.length; i < n; i++) {
     this.validators[i](this, query, constraint);
   }
+
+  return !(query.errors && query.errors.length);
 }
 
 Param.prototype.alias = function(key){
