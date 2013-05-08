@@ -11,7 +11,7 @@ $ npm install tower-param
 browser:
 
 ```bash
-$ component install tower-param
+$ component install tower/param
 ```
 
 ## Testing

@@ -10,14 +10,13 @@
     "tower/type": "*",
     "part/is-array": "*"
   },
-  "local": [],
-  "paths": [
-    "../"
-  ],
   "development": {
     "timoxley/assert": "*",
     "visionmedia/mocha": "*"
   },
-  "scripts": ["index.js", "lib/validators.js"],
+  "scripts": [
+    "index.js",
+    "lib/validators.js"
+  ],
   "license": "MIT"
 }
