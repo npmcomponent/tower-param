@@ -3,11 +3,11 @@
  * Module dependencies.
  */
 
-var Emitter = require('tower-emitter')
-  , validator = require('tower-validator')
-  , type = require('tower-type')
-  , isArray = require('part-is-array')
-  , validators = require('./lib/validators');
+var Emitter = require('tower-emitter');
+var validator = require('tower-validator');
+var type = require('tower-type');
+var isArray = require('part-is-array');
+var validators = require('./lib/validators');
 
 /**
  * Expose `param`.
@@ -95,7 +95,7 @@ Param.prototype.validator = function(key, val){
       if (!assert(self, constraint.right.value, val))
         query.errors.push('Invalid Constraint something...');
     });
-}
+};
 
 /**
  * Append operator to stack.
@@ -116,7 +116,7 @@ Param.prototype.operator = function(name){
   }
 
   this.operators.push(name);
-}
+};
 
 Param.prototype.validate = function(query, constraint, fn){
   if (!this.validators) return true;
@@ -126,16 +126,16 @@ Param.prototype.validate = function(query, constraint, fn){
   }
 
   return !(query.errors && query.errors.length);
-}
+};
 
 Param.prototype.alias = function(key){
   (this.aliases || (this.aliases = [])).push(key);
-}
+};
 
 // XXX: this might be too specific, trying it out for now.
 Param.prototype.format = function(type, name){
   this.serializer = { type: type, name: name };
-}
+};
 
 /**
  * Convert a value into a proper form.
@@ -148,6 +148,6 @@ Param.prototype.format = function(type, name){
 Param.prototype.typecast = function(val){
   // XXX: handle item type for array.
   return type(this.type).sanitize(val);
-}
+};
 
 validators(exports);
