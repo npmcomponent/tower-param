@@ -2,12 +2,12 @@
   "name": "tower-param",
   "repo": "tower/param",
   "description": "Tower Param Validator component",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "keywords": [],
   "dependencies": {
-    "tower/emitter": "0.1.0",
-    "tower/validator": "0.1.1",
-    "tower/type": "0.1.1",
+    "tower/emitter": "*",
+    "tower/validator": "*",
+    "tower/type": "*",
     "part/is-array": "*"
   },
   "development": {
