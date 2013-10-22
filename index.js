@@ -111,6 +111,8 @@ Param.prototype.operator = function(name){
       .push(function validate(self, query, constraint){
         if (!assert(self, constraint.operator, self.operators)) {
           query.errors.push('Invalid operator ' + constraint.operator);
+        } else {
+          // XXX: typecast
         }
       });
   }
@@ -145,9 +147,21 @@ Param.prototype.format = function(type, name){
  * @param {Mixed} val
  */
  
-Param.prototype.typecast = function(val){
-  // XXX: handle item type for array.
-  return type(this.type).sanitize(val);
+Param.prototype.typecast = function(val, fn){
+  // XXX: handle for whether or not it's a constraint or simple equality.
+  // XXX: handle async parsing too, in tower-type (for things like streams)
+  var res = type(this.type).sanitize(val);
+  if (fn) fn(null, res);
+  return res;
+};
+
+/**
+ * Expression for param.
+ */
+
+Param.prototype.expression = function(name){
+  this._expression = name;
+  return this;
 };
 
 validators(exports);
