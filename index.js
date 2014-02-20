@@ -3,10 +3,10 @@
  * Module dependencies.
  */
 
-var Emitter = require('tower-emitter');
-var validator = require('tower-validator');
-var type = require('tower-type');
-var isArray = require('part-is-array');
+// commented out by npm-component: var Emitter = require('tower-emitter');
+// commented out by npm-component: var validator = require('tower-validator');
+// commented out by npm-component: var type = require('tower-type');
+// commented out by npm-component: var isArray = require('part-is-array');
 var validators = require('./lib/validators');
 
 /**

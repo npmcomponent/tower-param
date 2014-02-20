@@ -1,15 +1,13 @@
 {
   "name": "tower-param",
+  "description": "Tower Param Validator component",
   "version": "0.1.2",
-  "main": "./index.js",
+  "keywords": [],
   "dependencies": {
-    "tower-emitter": "*",
-    "tower-validator": "*",
-    "tower-type": "*",
-    "part-is-array": "*"
+    "tower-emitter": "git://github.com/npmcomponent/tower-emitter.git",
+    "tower-validator": "git://github.com/npmcomponent/tower-validator.git",
+    "tower-type": "git://github.com/npmcomponent/tower-type.git",
+    "part-is-array": "git://github.com/npmcomponent/part-is-array.git"
   },
-  "repository": {
-    "type" : "git",
-    "url" : "http://github.com/tower/param.git"
-  }
+  "license": "MIT"
 }
